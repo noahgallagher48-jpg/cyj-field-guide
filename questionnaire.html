@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CYJ Field Guide · Questionnaire</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    --ground:#14110D; --panel:#1C1813; --line:rgba(237,231,221,.12);
+    --ink:#EDE7DD; --muted:#A69B8A; --faint:#7A7060;
+    --accent:#E2A73E; --ok:#8FB573;
+    --serif:"Iowan Old Style",Palatino,"Palatino Linotype",Georgia,serif;
+    --sans:"Avenir Next",Avenir,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+    font-size:16px;line-height:1.55;padding:0 18px 60px}
+  .wrap{max-width:640px;margin:0 auto}
+  a{color:var(--accent);text-decoration:none}
+  header{padding:40px 0 18px}
+  .mark{font-family:var(--serif);font-size:12px;letter-spacing:.42em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 14px}
+  h1{font-family:var(--serif);font-weight:500;font-size:26px;margin:0 0 6px}
+  .lede{color:var(--muted);font-size:14.5px;margin:0}
+  .bar{height:3px;background:var(--line);border-radius:2px;margin:22px 0 6px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+  .count{font-family:var(--mono);font-size:12px;color:var(--faint);margin:0 0 18px}
+  .q{font-family:var(--serif);font-size:21px;font-weight:500;margin:0 0 6px;text-wrap:balance}
+  .hint{color:var(--muted);font-size:14px;margin:0 0 18px}
+  .opts{display:flex;flex-direction:column;gap:10px;margin:0 0 16px}
+  .opt{position:relative;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:8px;
+    color:var(--ink);font-family:var(--sans);font-size:15.5px;padding:14px 46px 14px 16px;cursor:pointer;
+    transition:border-color .15s}
+  .opt:hover{border-color:rgba(226,167,62,.5)}
+  .opt.sel{border-color:var(--accent);background:rgba(226,167,62,.08)}
+  .opt .badge{position:absolute;right:12px;top:50%;transform:translateY(-50%);
+    font-family:var(--mono);font-size:12px;color:#14110D;background:var(--accent);
+    border-radius:50%;width:22px;height:22px;display:none;align-items:center;justify-content:center;font-weight:700}
+  .opt.sel .badge{display:flex}
+  textarea{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:8px;
+    color:var(--ink);font-family:var(--sans);font-size:15px;padding:12px 14px;min-height:74px;resize:vertical}
+  textarea::placeholder{color:var(--faint)}
+  .nav{display:flex;gap:10px;margin-top:22px}
+  .btn{flex:1;border:1px solid var(--accent);background:none;border-radius:8px;color:var(--accent);
+    font-size:15px;font-weight:600;padding:13px 18px;cursor:pointer;font-family:var(--sans)}
+  .btn.primary{background:var(--accent);color:#14110D}
+  .btn.ghost{border-color:var(--line);color:var(--muted);flex:0 0 auto}
+  .btn:disabled{opacity:.4;cursor:default}
+  .review{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 18px;
+    font-size:14px;color:var(--muted);white-space:pre-wrap;font-family:var(--mono);line-height:1.6;
+    max-height:50vh;overflow:auto}
+  .done-note{color:var(--ok);font-size:14px;margin-top:10px;display:none}
+  footer{margin-top:44px;color:var(--faint);font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="mark">Abba Photo</p>
+  <h1 id="title">The Field Guide, checked against reality</h1>
+  <p class="lede" id="lede">For Judy, or whoever runs the media team now. Ten taps, about three minutes; notes optional. Your answers steer the final edition.</p>
+</header>
+
+<div class="bar"><i id="barfill"></i></div>
+<p class="count" id="count"></p>
+
+<div id="stage"></div>
+
+<footer>Noah Gallagher · Abba Photo · <a href="mailto:noah@abba-photo.com">noah@abba-photo.com</a> · answers go straight to Noah and shape the final edition</footer>
+</div>
+
+<script>
+const STEPS = [
+ {k:"floor", type:"single", q:"The floor: 200 usable photos a day. Is the team hitting it?",
+  opts:["Most days","Not yet","We're past it"]},
+ {k:"shooters", type:"single", q:"How many shooters do you actually have this summer?",
+  opts:["Two","Three","Four or more"]},
+ {k:"upload", type:"single", q:"Keepers go to the day's Drive folder, same day, from the phone that shot them. Is that how it actually runs?",
+  opts:["Yes","Mostly","It's broken, I'll explain"],
+  note:"Where does it break?"},
+ {k:"shabbat", type:"single", q:"Saturday: what's the rule in practice?",
+  opts:["No shooting","Shoot, upload after","Same as weekdays"]},
+ {k:"used", type:"single", q:"Which part of the guide does the team actually use most?",
+  opts:["Quick reference","Where the photos are","The phone section","The 40D section"]},
+ {k:"weak", type:"single", q:"Which part needs the most work?",
+  opts:["Quick reference","Where the photos are","The phone section","The 40D section"],
+  note:"What's missing from it?"},
+ {k:"gear", type:"single", q:"Still the two 40Ds with the 18-135, the 50, and the 75-300?",
+  opts:["Yes","Gear changed, I'll note it"],
+  note:"What changed?"},
+ {k:"struggle", type:"multi", q:"Where does the team struggle most right now? Tap all.",
+  opts:["Hitting the volume","Sharpness and quality","Sort-and-upload discipline","Too much scenery, not enough faces","Evening and low light"]},
+ {k:"wrong", type:"single", q:"Anything in the guide that's just wrong for how CYJ runs?",
+  opts:["Yes, below","No"],
+  note:"What, and what's true instead?"},
+ {k:"wish", type:"note", q:"The one thing you wish the guide covered.",
+  hint:"Optional. The required part is done.",
+  note:"One thing, or riff."}
+];
+
+let idx = 0;
+let state = {};
+try { state = JSON.parse(localStorage.getItem("cyj_questionnaire")||"{}"); } catch(e){}
+STEPS.forEach(s=>{ state[s.k] = state[s.k] || {sel:[], note:""}; });
+
+function save(){ localStorage.setItem("cyj_questionnaire", JSON.stringify(state)); }
+
+function render(){
+  const total = STEPS.length;
+  document.getElementById("barfill").style.width = Math.round(100*Math.min(idx,total)/total)+"%";
+  document.getElementById("count").textContent = idx < total ? (idx+1)+" of "+total : "done";
+  const stage = document.getElementById("stage");
+  if (idx >= total) return renderReview(stage);
+  const s = STEPS[idx], st = state[s.k];
+  let h = '<p class="q">'+s.q+'</p>';
+  if (s.hint) h += '<p class="hint">'+s.hint+'</p>';
+  if (s.opts){
+    h += '<div class="opts">' + s.opts.map((o,i)=>{
+      const sel = st.sel.includes(o);
+      const badge = s.type==="rank" && sel ? (st.sel.indexOf(o)+1) : "&#10003;";
+      return '<button class="opt'+(sel?" sel":"")+'" data-i="'+i+'"><span>'+o+'</span><span class="badge">'+badge+'</span></button>';
+    }).join("") + '</div>';
+  }
+  if (s.note !== undefined) h += '<textarea id="note" placeholder="'+(s.note||"Riff if you want.")+'">'+(st.note||"")+'</textarea>';
+  h += '<div class="nav">'
+     + (idx>0 ? '<button class="btn ghost" id="back">Back</button>' : '')
+     + '<button class="btn primary" id="next">'+(idx===total-1?"Review":"Next")+'</button></div>';
+  stage.innerHTML = h;
+  stage.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+    const o = s.opts[+b.dataset.i];
+    if (s.type==="single"){ st.sel = [o]; }
+    else {
+      const at = st.sel.indexOf(o);
+      if (at>=0) st.sel.splice(at,1); else st.sel.push(o);
+    }
+    save(); render();
+  }));
+  const note = document.getElementById("note");
+  if (note) note.addEventListener("input", ()=>{ st.note = note.value; save(); });
+  const back = document.getElementById("back");
+  if (back) back.addEventListener("click", ()=>{ idx--; render(); window.scrollTo(0,0); });
+  document.getElementById("next").addEventListener("click", ()=>{ idx++; render(); window.scrollTo(0,0); });
+}
+
+function compile(){
+  let out = "CYJ FIELD GUIDE - JUDY'S ANSWERS\n\n";
+  STEPS.forEach(s=>{
+    const st = state[s.k];
+    if (!st.sel.length && !st.note) return;
+    out += s.q + "\n";
+    if (st.sel.length) out += "  > " + st.sel.join(s.type==="rank" ? " > " : ", ") + "\n";
+    if (st.note) out += "  note: " + st.note + "\n";
+    out += "\n";
+  });
+  return out;
+}
+
+function renderReview(stage){
+  const body = compile();
+  stage.innerHTML =
+    '<p class="q">That\'s everything.</p>'
+    + '<p class="hint">Look it over, then send it. It lands with Noah and gets built straight into the plan.</p>'
+    + '<div class="review">'+body.replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</div>'
+    + '<div class="nav"><button class="btn ghost" id="back">Back</button>'
+    + '<button class="btn primary" id="send">Email it to Noah</button>'
+    + '<button class="btn" id="copy">Copy</button></div>'
+    + '<p class="done-note" id="donenote">Copied. Paste it into an email or a text to Noah.</p>';
+  document.getElementById("back").addEventListener("click",()=>{ idx = STEPS.length-1; render(); });
+  document.getElementById("send").addEventListener("click",()=>{
+    location.href = "mailto:noah@abba-photo.com?subject="
+      + encodeURIComponent("CYJ guide: questionnaire answers")
+      + "&body=" + encodeURIComponent(body);
+  });
+  document.getElementById("copy").addEventListener("click",()=>{
+    navigator.clipboard.writeText(body).then(()=>{
+      document.getElementById("donenote").style.display="block";
+    });
+  });
+}
+
+render();
+</script>
+</body>
+</html>

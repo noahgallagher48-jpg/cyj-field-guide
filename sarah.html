@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CYJ Field Guide · Questionnaire</title>
+<title>CYJ Field Guide · Sarah's Questions</title>
 <meta name="robots" content="noindex">
 <style>
   :root{
@@ -29,16 +29,6 @@
   .count{font-family:var(--mono);font-size:12px;color:var(--faint);margin:0 0 18px}
   .q{font-family:var(--serif);font-size:21px;font-weight:500;margin:0 0 6px;text-wrap:balance}
   .hint{color:var(--muted);font-size:14px;margin:0 0 18px}
-  .opts{display:flex;flex-direction:column;gap:10px;margin:0 0 16px}
-  .opt{position:relative;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:8px;
-    color:var(--ink);font-family:var(--sans);font-size:15.5px;padding:14px 46px 14px 16px;cursor:pointer;
-    transition:border-color .15s}
-  .opt:hover{border-color:rgba(226,167,62,.5)}
-  .opt.sel{border-color:var(--accent);background:rgba(226,167,62,.08)}
-  .opt .badge{position:absolute;right:12px;top:50%;transform:translateY(-50%);
-    font-family:var(--mono);font-size:12px;color:#14110D;background:var(--accent);
-    border-radius:50%;width:22px;height:22px;display:none;align-items:center;justify-content:center;font-weight:700}
-  .opt.sel .badge{display:flex}
   textarea{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:8px;
     color:var(--ink);font-family:var(--sans);font-size:15px;padding:12px 14px;min-height:74px;resize:vertical}
   textarea::placeholder{color:var(--faint)}
@@ -52,6 +42,7 @@
     font-size:14px;color:var(--muted);white-space:pre-wrap;font-family:var(--mono);line-height:1.6;
     max-height:50vh;overflow:auto}
   .done-note{color:var(--ok);font-size:14px;margin-top:10px;display:none}
+  .afterword{color:var(--muted);font-size:14px;margin-top:22px}
   footer{margin-top:44px;color:var(--faint);font-size:12.5px}
 </style>
 </head>
@@ -59,8 +50,8 @@
 <div class="wrap">
 <header>
   <p class="mark">Abba Photo</p>
-  <h1 id="title">The Field Guide, checked against reality</h1>
-  <p class="lede" id="lede">For Judy, or whoever runs the media team now. Eight questions, all open. Skip any. Every answer changes the September edition.</p>
+  <h1 id="title">The guide, from marketing's side</h1>
+  <p class="lede" id="lede">For Sarah DeWitt. The guide points CYJ's media team at what to shoot; marketing is where the photos land. Seven questions, all open. Skip any. Your answers point the guide.</p>
 </header>
 
 <div class="bar"><i id="barfill"></i></div>
@@ -68,30 +59,29 @@
 
 <div id="stage"></div>
 
-<footer>Noah Gallagher · Abba Photo · <a href="mailto:noah@abba-photo.com">noah@abba-photo.com</a> · answers go straight to Noah and shape the final edition</footer>
+<footer>Noah Gallagher · Abba Photo · <a href="mailto:noah@abba-photo.com">noah@abba-photo.com</a> · answers go straight to Noah and shape the guide's next edition</footer>
 </div>
 
 <script>
 const STEPS = [
- {k:"guideopen", type:"note", q:"When did someone on the team last open the guide, and what were they looking for?",
-  hint:"If the answer is never, say never. That tells me more than a polite answer.", note:""},
- {k:"wrongline", type:"note", q:"What line in the guide is wrong for how CYJ actually runs this summer?",
-  hint:"If nothing comes to mind, read the quick-reference page once and check it against your week.", note:""},
- {k:"windows", type:"note", q:"Are there additional windows beyond those mentioned (free swim, flag, performances) that you found are shooting windows that get you the photos you need?", note:""},
- {k:"volume", type:"note", q:"On a normal day, how many keepers actually land in the Drive folder, and what stops that number being higher?",
-  hint:"People, time, gear, or the sorting?", note:""},
- {k:"gear40d", type:"note", q:"Where do the 40Ds give up on you? Name the program or the room.", note:""},
- {k:"unpublished", type:"note", q:"Tell me about one photo somebody loved that you did not publish, and why.", note:""},
- {k:"asked", type:"note", q:"What has a photographer asked you this summer that the guide should have answered?", note:""},
- {k:"riff", type:"note", q:"Anything else. Typos, gripes, wins. One line or ten.", note:""}
+ {k:"missing", type:"note", q:"What do you keep hunting for in CYJ's photo library and not finding?",
+  hint:"The photo you needed that did not exist. As many as come to mind.", note:""},
+ {k:"toomuch", type:"note", q:"What shows up in volume that you never use, and why does it die on your desk?", note:""},
+ {k:"scramble", type:"note", q:"Walk me through the last time you needed a photo fast. What was it for, and how did the hunt go?", note:""},
+ {k:"unusable", type:"note", q:"What makes an otherwise good photo unusable on your side?",
+  hint:"Crops, faces, backgrounds, resolution, permissions, whatever kills it.", note:""},
+ {k:"direction", type:"note", q:"If you could point the media team's cameras in a different direction for one month, what direction?", note:""},
+ {k:"compare", type:"note", q:"Where do CYJ's photos stand next to the camps you watch? What do theirs have that CYJ's do not?", note:""},
+ {k:"riff", type:"note", q:"Anything else a photographer or a guide should know to serve marketing better.",
+  hint:"One line or ten.", note:""}
 ];
 
 let idx = 0;
 let state = {};
-try { state = JSON.parse(localStorage.getItem("cyj_questionnaire_v2")||"{}"); } catch(e){}
+try { state = JSON.parse(localStorage.getItem("cyj_sarah_v1")||"{}"); } catch(e){}
 STEPS.forEach(s=>{ state[s.k] = state[s.k] || {sel:[], note:""}; });
 
-function save(){ localStorage.setItem("cyj_questionnaire_v2", JSON.stringify(state)); }
+function save(){ localStorage.setItem("cyj_sarah_v1", JSON.stringify(state)); }
 
 function render(){
   const total = STEPS.length;
@@ -102,27 +92,11 @@ function render(){
   const s = STEPS[idx], st = state[s.k];
   let h = '<p class="q">'+s.q+'</p>';
   if (s.hint) h += '<p class="hint">'+s.hint+'</p>';
-  if (s.opts){
-    h += '<div class="opts">' + s.opts.map((o,i)=>{
-      const sel = st.sel.includes(o);
-      const badge = s.type==="rank" && sel ? (st.sel.indexOf(o)+1) : "&#10003;";
-      return '<button class="opt'+(sel?" sel":"")+'" data-i="'+i+'"><span>'+o+'</span><span class="badge">'+badge+'</span></button>';
-    }).join("") + '</div>';
-  }
-  if (s.note !== undefined) h += '<textarea id="note" placeholder="'+(s.note||"Riff if you want.")+'">'+(st.note||"")+'</textarea>';
+  if (s.note !== undefined) h += '<textarea id="note" placeholder="'+(s.note||"Type, or skip.")+'">'+(st.note||"")+'</textarea>';
   h += '<div class="nav">'
      + (idx>0 ? '<button class="btn ghost" id="back">Back</button>' : '')
      + '<button class="btn primary" id="next">'+(idx===total-1?"Review":"Next")+'</button></div>';
   stage.innerHTML = h;
-  stage.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
-    const o = s.opts[+b.dataset.i];
-    if (s.type==="single"){ st.sel = [o]; }
-    else {
-      const at = st.sel.indexOf(o);
-      if (at>=0) st.sel.splice(at,1); else st.sel.push(o);
-    }
-    save(); render();
-  }));
   const note = document.getElementById("note");
   if (note) note.addEventListener("input", ()=>{ st.note = note.value; save(); });
   const back = document.getElementById("back");
@@ -131,14 +105,11 @@ function render(){
 }
 
 function compile(){
-  let out = "CYJ FIELD GUIDE - JUDY'S ANSWERS\n\n";
+  let out = "CYJ FIELD GUIDE - SARAH'S ANSWERS\n\n";
   STEPS.forEach(s=>{
     const st = state[s.k];
-    if (!st.sel.length && !st.note) return;
-    out += s.q + "\n";
-    if (st.sel.length) out += "  > " + st.sel.join(s.type==="rank" ? " > " : ", ") + "\n";
-    if (st.note) out += "  note: " + st.note + "\n";
-    out += "\n";
+    if (!st.note) return;
+    out += s.q + "\n  " + st.note + "\n\n";
   });
   return out;
 }
@@ -147,17 +118,17 @@ function renderReview(stage){
   const body = compile();
   stage.innerHTML =
     '<p class="q">That\'s everything.</p>'
-    + '<p class="hint">Look it over, then send it. It lands with Noah and gets built straight into the plan.</p>'
+    + '<p class="hint">Look it over, then send it. It lands with Noah and gets built straight into the guide.</p>'
     + '<div class="review">'+body.replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</div>'
     + '<div class="nav"><button class="btn ghost" id="back">Back</button>'
     + '<button class="btn primary" id="send">Email it to Noah</button>'
     + '<button class="btn" id="copy">Copy</button></div>'
     + '<p class="done-note" id="donenote">Copied. Paste it into an email or a text to Noah.</p>'
-    + '<p class="hint" style="margin-top:22px">And past today: <a href="https://docs.google.com/document/d/1GMmjtSIACo2K-131ziYYtAimK21PmEUcKg6Q8GmaqVE/edit" target="_blank" rel="noopener">the running notes doc</a> stays open all summer. Anything that occurs to you later goes there and folds into the guide the same way.</p>';
+    + '<p class="afterword">And past today: <a href="https://docs.google.com/document/d/1GMmjtSIACo2K-131ziYYtAimK21PmEUcKg6Q8GmaqVE/edit" target="_blank" rel="noopener">the running notes doc</a> stays open all summer. Anything that occurs to you later goes there and folds into the guide the same way.</p>';
   document.getElementById("back").addEventListener("click",()=>{ idx = STEPS.length-1; render(); });
   document.getElementById("send").addEventListener("click",()=>{
     location.href = "mailto:noah@abba-photo.com?subject="
-      + encodeURIComponent("CYJ guide: questionnaire answers")
+      + encodeURIComponent("CYJ guide: Sarah's answers")
       + "&body=" + encodeURIComponent(body);
   });
   document.getElementById("copy").addEventListener("click",()=>{

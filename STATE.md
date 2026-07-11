@@ -13,6 +13,7 @@ Read with CLAUDE.md. Public repo: nothing here the world can't see.
 - Persistent repository: the Running Notes Google Doc (id 1GMmjtSIACo2K-131ziYYtAimK21PmEUcKg6Q8GmaqVE, in ABBA_PHOTO_PROJECT), linked from the hub and both question-set endings. NEEDS NOAH'S SHARE CLICK (anyone with link, editor) before the team can write in it. Check it whenever processing intake.
 
 ## Log
+- 2026-07-11: CLOSE-OUT SENT by Noah ("Sat Night Photos/New Links" to Dan, his restructure: numbered payload up top, context as footnote). New commitment made in it: a THIRD folder is coming, processed for fine-art printing, including the 3 frames Noah plans to print for himself. Freeze framed as "week of 9/1," after which the guide is the document CYJ's 2027 photographers use.
 - 2026-07-11 (round 2, per Noah): Judy → Judi everywhere; Judi's set cut to six (40D-limits and photographers-asked questions killed); sarah.html → marketing.html, re-addressed to Dan + Sarah + whoever runs social, rebuilt around content-you-are-happy-with then content-you-want-more-of.
 - 2026-07-11: Added per Noah: the marketing question set + the Running Notes Doc as the persistent open-ended repository, linked from the hub notes card and both question-set endings. Doc share click pending.
 - 2026-07-11: Questionnaire rebuilt per Noah: ten taps out, eight open questions in, each keyed to a guide section (usage, corrections, windows, volume, 40D limits, keep-or-toss story, unanswered asks, riff). Q3 is Noah's wording verbatim. Settled facts no longer asked.

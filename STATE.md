@@ -10,4 +10,5 @@ Read with CLAUDE.md. Public repo: nothing here the world can't see.
 - Contact: Daniel Ravitch (director, payer). Judy = media lead.
 
 ## Log
+- 2026-07-11: Close-out combined with the Saturday-night photo delivery per Noah: ONE Gmail draft to Dan ("Sat Night Photos") now carries the two 7-10 Drive folder links (web-res shared; full-res still needs Noah's share click) plus the hub link. Earlier separate drafts are redundant; Noah deletes and sends.
 - 2026-07-10: Hub built and published. Close-out email drafted for Noah to send.

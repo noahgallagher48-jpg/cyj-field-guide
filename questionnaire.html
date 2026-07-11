@@ -60,7 +60,7 @@
 <header>
   <p class="mark">Abba Photo</p>
   <h1 id="title">The Field Guide, checked against reality</h1>
-  <p class="lede" id="lede">For Judy, or whoever runs the media team now. Eight questions, all open. Skip any. Every answer changes the September edition.</p>
+  <p class="lede" id="lede">For Judi, or whoever runs the media team now. Six questions, all open. Skip any. Every answer changes the September edition.</p>
 </header>
 
 <div class="bar"><i id="barfill"></i></div>
@@ -80,9 +80,7 @@ const STEPS = [
  {k:"windows", type:"note", q:"Are there additional windows beyond those mentioned (free swim, flag, performances) that you found are shooting windows that get you the photos you need?", note:""},
  {k:"volume", type:"note", q:"On a normal day, how many keepers actually land in the Drive folder, and what stops that number being higher?",
   hint:"People, time, gear, or the sorting?", note:""},
- {k:"gear40d", type:"note", q:"Where do the 40Ds give up on you? Name the program or the room.", note:""},
  {k:"unpublished", type:"note", q:"Tell me about one photo somebody loved that you did not publish, and why.", note:""},
- {k:"asked", type:"note", q:"What has a photographer asked you this summer that the guide should have answered?", note:""},
  {k:"riff", type:"note", q:"Anything else. Typos, gripes, wins. One line or ten.", note:""}
 ];
 
@@ -131,7 +129,7 @@ function render(){
 }
 
 function compile(){
-  let out = "CYJ FIELD GUIDE - JUDY'S ANSWERS\n\n";
+  let out = "CYJ FIELD GUIDE - JUDI'S ANSWERS\n\n";
   STEPS.forEach(s=>{
     const st = state[s.k];
     if (!st.sel.length && !st.note) return;

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CYJ Field Guide · Sarah's Questions</title>
+<title>CYJ Field Guide · Marketing Questions</title>
 <meta name="robots" content="noindex">
 <style>
   :root{
@@ -51,7 +51,7 @@
 <header>
   <p class="mark">Abba Photo</p>
   <h1 id="title">The guide, from marketing's side</h1>
-  <p class="lede" id="lede">For Sarah DeWitt. The guide points CYJ's media team at what to shoot; marketing is where the photos land. Seven questions, all open. Skip any. Your answers point the guide.</p>
+  <p class="lede" id="lede">For Dan, Sarah DeWitt, and whoever else runs CYJ's marketing and social media. Six questions, all open. Skip any. Your answers point the guide, and the guide points the media team.</p>
 </header>
 
 <div class="bar"><i id="barfill"></i></div>
@@ -64,13 +64,13 @@
 
 <script>
 const STEPS = [
- {k:"missing", type:"note", q:"What do you keep hunting for in CYJ's photo library and not finding?",
-  hint:"The photo you needed that did not exist. As many as come to mind.", note:""},
- {k:"toomuch", type:"note", q:"What shows up in volume that you never use, and why does it die on your desk?", note:""},
+ {k:"happy", type:"note", q:"Which photos from camp are you happiest with? The ones you reach for again and again.",
+  hint:"Describe them or link them. What makes them work for you is the useful part.", note:""},
+ {k:"moreof", type:"note", q:"The other side: what content would you like to see more of?",
+  hint:"The photos you wish the library gave you. As specific as you can get.", note:""},
  {k:"scramble", type:"note", q:"Walk me through the last time you needed a photo fast. What was it for, and how did the hunt go?", note:""},
  {k:"unusable", type:"note", q:"What makes an otherwise good photo unusable on your side?",
   hint:"Crops, faces, backgrounds, resolution, permissions, whatever kills it.", note:""},
- {k:"direction", type:"note", q:"If you could point the media team's cameras in a different direction for one month, what direction?", note:""},
  {k:"compare", type:"note", q:"Where do CYJ's photos stand next to the camps you watch? What do theirs have that CYJ's do not?", note:""},
  {k:"riff", type:"note", q:"Anything else a photographer or a guide should know to serve marketing better.",
   hint:"One line or ten.", note:""}
@@ -78,10 +78,10 @@ const STEPS = [
 
 let idx = 0;
 let state = {};
-try { state = JSON.parse(localStorage.getItem("cyj_sarah_v1")||"{}"); } catch(e){}
+try { state = JSON.parse(localStorage.getItem("cyj_marketing_v1")||"{}"); } catch(e){}
 STEPS.forEach(s=>{ state[s.k] = state[s.k] || {sel:[], note:""}; });
 
-function save(){ localStorage.setItem("cyj_sarah_v1", JSON.stringify(state)); }
+function save(){ localStorage.setItem("cyj_marketing_v1", JSON.stringify(state)); }
 
 function render(){
   const total = STEPS.length;
@@ -105,7 +105,7 @@ function render(){
 }
 
 function compile(){
-  let out = "CYJ FIELD GUIDE - SARAH'S ANSWERS\n\n";
+  let out = "CYJ FIELD GUIDE - MARKETING ANSWERS\n\n";
   STEPS.forEach(s=>{
     const st = state[s.k];
     if (!st.note) return;
@@ -128,7 +128,7 @@ function renderReview(stage){
   document.getElementById("back").addEventListener("click",()=>{ idx = STEPS.length-1; render(); });
   document.getElementById("send").addEventListener("click",()=>{
     location.href = "mailto:noah@abba-photo.com?subject="
-      + encodeURIComponent("CYJ guide: Sarah's answers")
+      + encodeURIComponent("CYJ guide: marketing answers")
       + "&body=" + encodeURIComponent(body);
   });
   document.getElementById("copy").addEventListener("click",()=>{

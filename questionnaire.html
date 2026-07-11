@@ -60,7 +60,7 @@
 <header>
   <p class="mark">Abba Photo</p>
   <h1 id="title">The Field Guide, checked against reality</h1>
-  <p class="lede" id="lede">For Judy, or whoever runs the media team now. Ten taps, about three minutes; notes optional. Your answers steer the final edition.</p>
+  <p class="lede" id="lede">For Judy, or whoever runs the media team now. Eight questions, all open. Skip any. Every answer changes the September edition.</p>
 </header>
 
 <div class="bar"><i id="barfill"></i></div>
@@ -73,39 +73,25 @@
 
 <script>
 const STEPS = [
- {k:"floor", type:"single", q:"The floor: 200 usable photos a day. Is the team hitting it?",
-  opts:["Most days","Not yet","We're past it"]},
- {k:"shooters", type:"single", q:"How many shooters do you actually have this summer?",
-  opts:["Two","Three","Four or more"]},
- {k:"upload", type:"single", q:"Keepers go to the day's Drive folder, same day, from the phone that shot them. Is that how it actually runs?",
-  opts:["Yes","Mostly","It's broken, I'll explain"],
-  note:"Where does it break?"},
- {k:"shabbat", type:"single", q:"Saturday: what's the rule in practice?",
-  opts:["No shooting","Shoot, upload after","Same as weekdays"]},
- {k:"used", type:"single", q:"Which part of the guide does the team actually use most?",
-  opts:["Quick reference","Where the photos are","The phone section","The 40D section"]},
- {k:"weak", type:"single", q:"Which part needs the most work?",
-  opts:["Quick reference","Where the photos are","The phone section","The 40D section"],
-  note:"What's missing from it?"},
- {k:"gear", type:"single", q:"Still the two 40Ds with the 18-135, the 50, and the 75-300?",
-  opts:["Yes","Gear changed, I'll note it"],
-  note:"What changed?"},
- {k:"struggle", type:"multi", q:"Where does the team struggle most right now? Tap all.",
-  opts:["Hitting the volume","Sharpness and quality","Sort-and-upload discipline","Too much scenery, not enough faces","Evening and low light"]},
- {k:"wrong", type:"single", q:"Anything in the guide that's just wrong for how CYJ runs?",
-  opts:["Yes, below","No"],
-  note:"What, and what's true instead?"},
- {k:"wish", type:"note", q:"The one thing you wish the guide covered.",
-  hint:"Optional. The required part is done.",
-  note:"One thing, or riff."}
+ {k:"guideopen", type:"note", q:"When did someone on the team last open the guide, and what were they looking for?",
+  hint:"If the answer is never, say never. That tells me more than a polite answer.", note:""},
+ {k:"wrongline", type:"note", q:"What line in the guide is wrong for how CYJ actually runs this summer?",
+  hint:"If nothing comes to mind, read the quick-reference page once and check it against your week.", note:""},
+ {k:"windows", type:"note", q:"Are there additional windows beyond those mentioned (free swim, flag, performances) that you found are shooting windows that get you the photos you need?", note:""},
+ {k:"volume", type:"note", q:"On a normal day, how many keepers actually land in the Drive folder, and what stops that number being higher?",
+  hint:"People, time, gear, or the sorting?", note:""},
+ {k:"gear40d", type:"note", q:"Where do the 40Ds give up on you? Name the program or the room.", note:""},
+ {k:"unpublished", type:"note", q:"Tell me about one photo somebody loved that you did not publish, and why.", note:""},
+ {k:"asked", type:"note", q:"What has a photographer asked you this summer that the guide should have answered?", note:""},
+ {k:"riff", type:"note", q:"Anything else. Typos, gripes, wins. One line or ten.", note:""}
 ];
 
 let idx = 0;
 let state = {};
-try { state = JSON.parse(localStorage.getItem("cyj_questionnaire")||"{}"); } catch(e){}
+try { state = JSON.parse(localStorage.getItem("cyj_questionnaire_v2")||"{}"); } catch(e){}
 STEPS.forEach(s=>{ state[s.k] = state[s.k] || {sel:[], note:""}; });
 
-function save(){ localStorage.setItem("cyj_questionnaire", JSON.stringify(state)); }
+function save(){ localStorage.setItem("cyj_questionnaire_v2", JSON.stringify(state)); }
 
 function render(){
   const total = STEPS.length;

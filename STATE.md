@@ -12,7 +12,10 @@ Read with CLAUDE.md. Public repo: nothing here the world can't see.
 - Marketing question set at `marketing.html` (renamed from sarah.html 2026-07-11): for Dan AND Sarah AND whoever runs social/marketing, per Noah. Spine = the happy-with / want-more-of pair, then scramble story, unusable-photo rules, camp comparison, riff. Answers by email, subject "CYJ guide: marketing answers".
 - Persistent repository: the Running Notes Google Doc (id 1GMmjtSIACo2K-131ziYYtAimK21PmEUcKg6Q8GmaqVE, in ABBA_PHOTO_PROJECT), linked from the hub and both question-set endings. NEEDS NOAH'S SHARE CLICK (anyone with link, editor) before the team can write in it. Check it whenever processing intake.
 
+- Guide next edition owes: a dedicated LOW LIGHT tab (v10 has the material distributed: exposure-triangle rule, 50mm card, brace steps, but no single tab; low light was never reached in the June training) + the Judi spelling fix. Noah's phrase for the tab: "three stoppers," clarify before building.
+
 ## Log
+- 2026-07-11: Debrief captured as a reframe (full verbatim in ~/Abba_Photo/cyj_engagement/notes.md): Judi started at never-held-a-camera and her first demo frames were staff working and engaged; "the guide is it, it is everything I taught her." CYJ's social looks fine, videographer capable.
 - 2026-07-11: CLOSE-OUT SENT by Noah ("Sat Night Photos/New Links" to Dan, his restructure: numbered payload up top, context as footnote). New commitment made in it: a THIRD folder is coming, processed for fine-art printing, including the 3 frames Noah plans to print for himself. Freeze framed as "week of 9/1," after which the guide is the document CYJ's 2027 photographers use.
 - 2026-07-11 (round 2, per Noah): Judy → Judi everywhere; Judi's set cut to six (40D-limits and photographers-asked questions killed); sarah.html → marketing.html, re-addressed to Dan + Sarah + whoever runs social, rebuilt around content-you-are-happy-with then content-you-want-more-of.
 - 2026-07-11: Added per Noah: the marketing question set + the Running Notes Doc as the persistent open-ended repository, linked from the hub notes card and both question-set endings. Doc share click pending.

@@ -12,7 +12,7 @@ This is the operating file for Abba Photo client engagement hubs: live, client-f
 4. Log what changed and why in `STATE.md`: one line, date first, newest at the top of the log.
 
 ## Intake loop
-Client notes arrive by email at noah@abba-photo.com (the specific engagement thread and contacts are in `STATE.md`). When asked to process intake: read the new messages through the Gmail connector, fold the substance into the page or record it in `STATE.md` as pending, push, and stage (never send) any reply a question requires. Sending email is always the owner's click.
+Client notes arrive by email at noah@abba-photo.com (engagement specifics are in `STATE.md`; contact addresses live in the private `abba-dashboard` repo, `docs/CLIENT_CONTACTS.md`). When asked to process intake: read the new messages through the Gmail connector, fold the substance into the page or record it in `STATE.md` as pending, push, and stage (never send) any reply a question requires. Sending email is always the owner's click.
 
 ## Voice (hard rules)
 - No em dashes, anywhere, ever.
@@ -21,7 +21,7 @@ Client notes arrive by email at noah@abba-photo.com (the specific engagement thr
 - Plain sentences. No "it's not X, it's Y" reversals, no rule-of-three flourishes, no hollow intensifiers.
 
 ## Client-page boundary
-The page is read by the client's whole team and the repo is public. Never put on the page or in this repo: pricing, internal notes, other clients' names, or client details that are not yet public (campaign themes, gifts, donor names, unannounced plans). If a client note references something that does not already appear on the page, ask the owner before publishing it. When in doubt, leave it off.
+The page is read by the client's whole team and the repo is public. Never put on the page or in this repo: pricing or any money amount, contact addresses or phone numbers, booking/confirmation references, personal-circumstance context, internal notes, other clients' names, or client details that are not yet public (campaign themes, gifts, donor names, unannounced plans). All of those live in the private `abba-dashboard` repo at `docs/CLIENT_CONTACTS.md`; this repo carries only a pointer. If a client note references something that does not already appear on the page, ask the owner before publishing it. When in doubt, leave it off.
 
 ## Images
 Cloud sandboxes are Linux: use Python/Pillow, not sips.

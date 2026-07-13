@@ -3,7 +3,7 @@
 Read with CLAUDE.md. Public repo: nothing here the world can't see.
 
 ## Facts a session needs
-- CYJ Midwest: June 11-12 training delivered, $2,000 paid. Photos were NOT part of the contract with any specificity; the guide is the completing deliverable. Do not promise photo deliveries on this page.
+- CYJ Midwest: June 11-12 training delivered, PAID IN FULL (amount in the private dashboard repo, `docs/CLIENT_CONTACTS.md`). Photos were NOT part of the contract with any specificity; the guide is the completing deliverable. Do not promise photo deliveries on this page.
 - The bespoke guide = the published Media Team Field Guide v10 (built from CYJ's June training: Judi's workflow, the 40D kit, their schedule): https://noahgallagher48-jpg.github.io/media-team-field-guide/Media-Team-Field-Guide.pdf
 - SPELLING (Noah, 2026-07-11): her name is **Judi**, with an i, not Judy. All hub surfaces corrected. The v10 PDF itself still prints "Judy"; fix in the next PDF edition, at latest the September 1 final.
 - Living-document terms, stated on the page: updates through September 1, 2026, then the guide freezes and CYJ receives the final digital file.
